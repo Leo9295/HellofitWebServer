@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -86,6 +87,16 @@ public class SchoolInfoFacadeREST extends AbstractFacade<SchoolInfo> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+    @GET
+    @Path("findSchoolBySuburb/{suburbName}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<SchoolInfo> findSchoolBySuburb(@PathParam("suburbName") String suburbName) {       
+        TypedQuery<SchoolInfo> tq = em.createQuery("SELECT s FROM SchoolInfo s WHERE s.schoolsuburb = :suburbName", SchoolInfo.class);
+        tq.setParameter("suburbName", suburbName);
+        
+        return tq.getResultList();
     }
     
 }

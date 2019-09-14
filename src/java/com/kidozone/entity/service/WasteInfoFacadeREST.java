@@ -6,7 +6,9 @@
 package com.kidozone.entity.service;
 
 import com.kidozone.entity.WasteInfo;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -86,6 +88,26 @@ public class WasteInfoFacadeREST extends AbstractFacade<WasteInfo> {
     @Override
     protected EntityManager getEntityManager() {
         return em;
+    }
+    
+    @GET
+    @Path("findWasteRandomly")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<WasteInfo> findWasteRandomly() {
+        List<WasteInfo> list = new ArrayList<WasteInfo>();
+        List<WasteInfo> tempList = this.findAll();
+        while (list.size() < 10) {
+            int index = getRandomNum(tempList.size());
+            if (!list.contains(tempList.get(index))) {
+                list.add(tempList.get(index));
+            }
+        }
+        return list;
+    }
+    
+    private int getRandomNum(int max) {
+        Random r = new Random();
+        return r.nextInt(max);
     }
     
 }
