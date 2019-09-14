@@ -44,6 +44,9 @@ public class FoodInfo implements Serializable {
     private String foodname;
     @Column(name = "FOODRANKING")
     private Integer foodranking;
+    @Size(max = 500)
+    @Column(name = "FOODIMAGEPATH")
+    private String foodimagepath;
     @JoinColumn(name = "FOODCATEGORY", referencedColumnName = "ID")
     @ManyToOne
     private FoodCategory foodcategory;
@@ -110,6 +113,14 @@ public class FoodInfo implements Serializable {
     @Override
     public String toString() {
         return "com.kidozone.entity.FoodInfo[ id=" + id + " ]";
+    }
+
+    public String getFoodimagepath() {
+        return foodimagepath;
+    }
+
+    public void setFoodimagepath(String foodimagepath) {
+        this.foodimagepath = foodimagepath;
     }
     
 }

@@ -41,6 +41,9 @@ public class WasteInfo implements Serializable {
     @Size(max = 50)
     @Column(name = "WASTENAME")
     private String wastename;
+    @Size(max = 500)
+    @Column(name = "WASTEIMAGEPATH")
+    private String wasteimagepath;
     @JoinColumn(name = "WASTECATEGORY", referencedColumnName = "ID")
     @ManyToOne
     private WasteCategory wastecategory;
@@ -99,6 +102,14 @@ public class WasteInfo implements Serializable {
     @Override
     public String toString() {
         return "com.kidozone.entity.WasteInfo[ id=" + id + " ]";
+    }
+
+    public String getWasteimagepath() {
+        return wasteimagepath;
+    }
+
+    public void setWasteimagepath(String wasteimagepath) {
+        this.wasteimagepath = wasteimagepath;
     }
     
 }

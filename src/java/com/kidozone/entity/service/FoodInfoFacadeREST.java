@@ -6,6 +6,7 @@
 package com.kidozone.entity.service;
 
 import com.kidozone.entity.FoodInfo;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -122,4 +123,19 @@ public class FoodInfoFacadeREST extends AbstractFacade<FoodInfo> {
         return r.nextInt(max);
     }
     
+    @GET
+    @Path("findFoodPic/{foodid}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String findFoodPic(@PathParam("foodid") int foodid) {
+        try{
+            TypedQuery<FoodInfo> tq = em.createQuery("SELECT f FROM FoodInfo f WHERE f.id = :foodid", FoodInfo.class);
+            tq.setParameter("foodid", foodid);
+            List<FoodInfo> list = tq.getResultList();
+            String decodePic = JsonOutputUtil.encodeImage(list.get(0).getFoodimagepath());
+            return decodePic;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }

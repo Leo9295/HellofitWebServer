@@ -6,7 +6,7 @@ import javax.persistence.metamodel.CollectionAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-09-14T14:35:40")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-09-14T17:52:31")
 @StaticMetamodel(WasteCategory.class)
 public class WasteCategory_ { 
 
