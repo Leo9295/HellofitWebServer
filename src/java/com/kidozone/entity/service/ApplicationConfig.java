@@ -32,6 +32,7 @@ public class ApplicationConfig extends Application {
         resources.add(com.kidozone.entity.service.FoodCategoryFacadeREST.class);
         resources.add(com.kidozone.entity.service.FoodInfoFacadeREST.class);
         resources.add(com.kidozone.entity.service.SchoolInfoFacadeREST.class);
+        resources.add(com.kidozone.entity.service.WasteCategoryFacadeREST.class);
         resources.add(com.kidozone.entity.service.WasteInfoFacadeREST.class);
     }
     
