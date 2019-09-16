@@ -116,7 +116,7 @@ public class WasteInfoFacadeREST extends AbstractFacade<WasteInfo> {
     @GET
     @Path("findWastePic/{wasteid}")
     @Produces(MediaType.APPLICATION_JSON)
-    public String findWastePic(@PathParam("foodid") int wasteid) {
+    public String findWastePic(@PathParam("wasteid") int wasteid) {
         try{
             TypedQuery<WasteInfo> tq = em.createQuery("SELECT w FROM WasteInfo w WHERE w.id = :wasteid", WasteInfo.class);
             tq.setParameter("wasteid", wasteid);
