@@ -5,13 +5,16 @@
  */
 package com.kidozone.entity.service;
 
+import com.kidozone.entity.FoodInfo;
 import com.kidozone.entity.WasteInfo;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -108,6 +111,24 @@ public class WasteInfoFacadeREST extends AbstractFacade<WasteInfo> {
     private int getRandomNum(int max) {
         Random r = new Random();
         return r.nextInt(max);
+    }
+    
+    @GET
+    @Path("findWastePic/{wasteid}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String findWastePic(@PathParam("foodid") int wasteid) {
+        try{
+            TypedQuery<WasteInfo> tq = em.createQuery("SELECT w FROM WasteInfo w WHERE w.id = :wasteid", WasteInfo.class);
+            tq.setParameter("wasteid", wasteid);
+            List<WasteInfo> list = tq.getResultList();
+            if (!list.isEmpty()) {
+                String decodePic = JsonOutputUtil.encodeImage(list.get(0).getWasteimagepath());
+                return decodePic;
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
     
 }

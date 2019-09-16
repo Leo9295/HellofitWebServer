@@ -131,8 +131,10 @@ public class FoodInfoFacadeREST extends AbstractFacade<FoodInfo> {
             TypedQuery<FoodInfo> tq = em.createQuery("SELECT f FROM FoodInfo f WHERE f.id = :foodid", FoodInfo.class);
             tq.setParameter("foodid", foodid);
             List<FoodInfo> list = tq.getResultList();
-            String decodePic = JsonOutputUtil.encodeImage(list.get(0).getFoodimagepath());
-            return decodePic;
+            if (!list.isEmpty()) {
+                String decodePic = JsonOutputUtil.encodeImage(list.get(0).getFoodimagepath());
+                return decodePic;
+            }
         } catch (IOException e) {
             e.printStackTrace();
         }
