@@ -28,12 +28,12 @@
         steady-pool-size="8" 
         validate-atmost-once-period-in-seconds="0" 
         wrap-jdbc-objects="false">
-        <property name="serverName" value="localhost"/>
+        <property name="serverName" value="3.105.242.54"/>
         <property name="portNumber" value="1527"/>
         <property name="databaseName" value="hellofitDB"/>
         <property name="User" value="hellofit"/>
         <property name="Password" value="hellofit"/>
-        <property name="URL" value="jdbc:derby://localhost:1527/hellofitDB"/>
+        <property name="URL" value="jdbc:derby://3.105.242.54:1527/home/ubuntu/glassfish-4.1/glassfish/databases/hellofitDB"/>
         <property name="driverClass" value="org.apache.derby.jdbc.ClientDriver"/>
     </jdbc-connection-pool>
     <jdbc-resource enabled="true" jndi-name="java:app/hellofitJNDI" object-type="user" pool-name="derby_net_hellofitDB_hellofitPool"/>

@@ -118,11 +118,6 @@ public class FoodInfoFacadeREST extends AbstractFacade<FoodInfo> {
         return list;
     }
     
-    private int getRandomNum(int max) {
-        Random r = new Random();
-        return r.nextInt(max);
-    }
-    
     @GET
     @Path("findFoodPic/{foodid}")
     @Produces(MediaType.APPLICATION_JSON)
@@ -139,5 +134,193 @@ public class FoodInfoFacadeREST extends AbstractFacade<FoodInfo> {
             e.printStackTrace();
         }
         return null;
+    }
+    
+    @GET
+    @Path("findLunchboxFood")
+    @Produces(MediaType.APPLICATION_JSON)
+    public List<FoodInfo> findLunchboxFood() {
+        List<FoodInfo> list = new ArrayList<FoodInfo>();
+        List<FoodInfo> tempList = this.findAll();
+        // Fruit id (1 - 15) -> list index (0 - 14)
+        // choose three from them
+        for (int i = 0; i < 3;) {
+            int index = this.getRandomNum(0, 14);
+            if (!list.contains(tempList.get(index))) {
+                list.add(tempList.get(index));
+                i++;
+            }
+        }
+        // Two ohter anwsers
+        for (int i = 0; i < 2;) {
+            int index = this.getRandomNum(15, 53);
+            if (!list.get(list.size() - 1).equals(tempList.get(index))) {
+                list.add(tempList.get(index));
+                i++;
+            }
+        }
+        
+        // Vege id (16 - 26) -> list index (15 - 25)
+        // Choose three from them
+        for (int i = 0; i < 3;) {
+            int index = this.getRandomNum(15, 25);
+            if (!list.contains(tempList.get(index))) {
+                list.add(tempList.get(index));
+                i++;
+            }
+        }
+        // Two ohter anwsers
+        for (int i = 0; i < 2;) {
+            int r = this.getRandomNum(2);
+            switch (r){
+                case 0:
+                    int index = this.getRandomNum(0, 14);
+                    if (!list.get(list.size() - 1).equals(tempList.get(index))) {
+                        list.add(tempList.get(index));
+                        i++;
+                    }
+                    break;
+                case 1:
+                    int index1 = this.getRandomNum(26, 53);
+                    if (!list.get(list.size() - 1).equals(tempList.get(index1))) {
+                        list.add(tempList.get(index1));
+                        i++;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        // Diary Product id (27 - 31) -> list index (26 - 30)
+        // Choose three from them
+        for (int i = 0; i < 3;) {
+            int index = this.getRandomNum(26, 30);
+            if (!list.contains(tempList.get(index))) {
+                list.add(tempList.get(index));
+                i++;
+            }
+        }
+        // Two ohter anwsers
+        for (int i = 0; i < 2;) {
+            int r = this.getRandomNum(2);
+            switch (r){
+                case 0:
+                    int index = this.getRandomNum(0, 25);
+                    if (!list.get(list.size() - 1).equals(tempList.get(index))) {
+                        list.add(tempList.get(index));
+                        i++;
+                    }
+                    break;
+                case 1:
+                    int index1 = this.getRandomNum(31, 53);
+                    if (!list.get(list.size() - 1).equals(tempList.get(index1))) {
+                        list.add(tempList.get(index1));
+                        i++;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        // Meat id (32 - 37) -> list index (31 - 36)
+        // Choose three from them
+        for (int i = 0; i < 3;) {
+            int index = this.getRandomNum(31, 36);
+            if (!list.contains(tempList.get(index))) {
+                list.add(tempList.get(index));
+                i++;
+            }
+        }
+        // Two ohter anwsers
+        for (int i = 0; i < 2;) {
+            int r = this.getRandomNum(2);
+            switch (r){
+                case 0:
+                    int index = this.getRandomNum(0, 30);
+                    if (!list.get(list.size() - 1).equals(tempList.get(index))) {
+                        list.add(tempList.get(index));
+                        i++;
+                    }
+                    break;
+                case 1:
+                    int index1 = this.getRandomNum(37, 53);
+                    if (!list.get(list.size() - 1).equals(tempList.get(index1))) {
+                        list.add(tempList.get(index1));
+                        i++;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        // Grain id (38 - 43) -> list index (37 - 42)
+        // Choose three from them
+        for (int i = 0; i < 3;) {
+            int index = this.getRandomNum(37, 42);
+            if (!list.contains(tempList.get(index))) {
+                list.add(tempList.get(index));
+                i++;
+            }
+        }
+        // Two ohter anwsers
+        for (int i = 0; i < 2;) {
+            int r = this.getRandomNum(2);
+            switch (r){
+                case 0:
+                    int index = this.getRandomNum(0, 36);
+                    if (!list.get(list.size() - 1).equals(tempList.get(index))) {
+                        list.add(tempList.get(index));
+                        i++;
+                    }
+                    break;
+                case 1:
+                    int index1 = this.getRandomNum(43, 53);
+                    if (!list.get(list.size() - 1).equals(tempList.get(index1))) {
+                        list.add(tempList.get(index1));
+                        i++;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        // Drink id (44 - 45) -> list index (43 - 44)
+        // Choose both of them
+        list.add(tempList.get(43));
+        list.add(tempList.get(44));
+        list.add(tempList.get(47));
+        // three ohter anwsers
+        for (int i = 0; i < 2;) {
+            int r = this.getRandomNum(2);
+            switch (r){
+                case 0:
+                    int index = this.getRandomNum(0, 42);
+                    if (!list.get(list.size() - 1).equals(tempList.get(index))) {
+                        list.add(tempList.get(index));
+                        i++;
+                    }
+                    break;
+                case 1:
+                    int index1 = this.getRandomNum(48, 53);
+                    if (!list.get(list.size() - 1).equals(tempList.get(index1))) {
+                        list.add(tempList.get(index1));
+                        i++;
+                    }
+                    break;
+                default:
+                    break;
+            }
+        }
+        return list;
+    }
+    
+    private int getRandomNum(int max) {
+        Random r = new Random();
+        return r.nextInt(max);
+    }
+    
+    private int getRandomNum(int min, int max) {
+        Random r = new Random();
+        return r.nextInt((max - min) + 1) + min;
     }
 }
