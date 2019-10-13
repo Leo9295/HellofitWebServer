@@ -12,7 +12,7 @@ import sun.misc.BASE64Encoder;
 
 /**
  *
- * @author leonard
+ * @author Mingzhe Liu
  */
 public class JsonOutputUtil {
     

@@ -26,7 +26,7 @@ import javax.ws.rs.core.MediaType;
 
 /**
  *
- * @author leonard
+ * @author Mingzhe Liu
  */
 @Stateless
 @Path("com.kidozone.entity.foodinfo")

@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author leonard
+ * @author Mingzhe Liu
  */
 @Entity
 @Table(name = "FOOD_CATEGORY")
